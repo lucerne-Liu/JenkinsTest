@@ -1,21 +1,23 @@
 #!/usr/bin/env groovy Jenkinsfile
-// Declarative //
-pipeline {
-    agent any
+node{
+    //定义gradle环境
+    def gradleHome = tool 'Gradle4.7'
+    env.PATH = "${gradleHome}/bin:${env.PATH}"
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'make'
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-            }
+    stage('Build'){
+        if(isUnix()){
+            sh 'gradle build --info'
         }
-        stage('Test') {
-            steps {
-                sh 'make check || true'
-                junit '**/target/*.xml'
-            }
+        else{
+            bat 'gradle build --info'
         }
-
+    }
+    stage('Test'){
+        if(isUnix()){
+            sh 'gradle test --info'
+        }
+        else{
+            bat 'gradle test --info'
+        }
     }
 }
