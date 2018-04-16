@@ -1,24 +1,20 @@
 #!/usr/bin/env groovy Jenkinsfile
+
+Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
-    stages {
 
-        stage('Build'){
-            if(isUnix()){
+    stages {
+        stage('Build') {
+            steps {
                 sh 'gradle build --info'
             }
-            else{
-                bat 'gradle build --info'
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
             }
         }
-        stage('Test'){
-            if(isUnix()){
-                sh 'gradle test --info'
-            }
-            else{
-                bat 'gradle test --info'
-            }
-        }
+
     }
 }
-
