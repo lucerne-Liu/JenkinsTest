@@ -1,9 +1,9 @@
 #!/usr/bin/env groovy Jenkinsfile
 pipeline {
     agent any
-    def gradleHome = tool 'Gradle4.7'
-    env.PATH = "${gradleHome}/bin:${env.PATH}"
     stages {
+        def gradleHome = tool 'Gradle4.7'
+        env.PATH = "${gradleHome}/bin:${env.PATH}"
         stage('Build'){
             if(isUnix()){
                 sh 'gradle build --info'
