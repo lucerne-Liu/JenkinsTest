@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy Jenkinsfile
-
 pipeline {
     agent any
     def gradleHome = tool 'Gradle4.7'
