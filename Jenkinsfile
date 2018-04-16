@@ -1,8 +1,13 @@
-// Declarative //
+#!/usr/bin/env groovy Jenkinsfile
 pipeline {
     agent any
 
     stages {
+        stage('Declarative:Checkout SCM') {
+                steps {
+                    echo 'Declarative:Checkout SCM'
+                }
+            }
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -13,21 +18,6 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-}
-node {
-    stage('Build') {
-        echo 'Building....'
-    }
-    stage('Test') {
-        echo 'Building....'
-    }
-    stage('Deploy') {
-        echo 'Deploying....'
+
     }
 }
