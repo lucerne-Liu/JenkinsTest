@@ -2,8 +2,7 @@
 pipeline {
     agent any
     stages {
-        def gradleHome = tool 'Gradle4.7'
-        env.PATH = "${gradleHome}/bin:${env.PATH}"
+
         stage('Build'){
             if(isUnix()){
                 sh 'gradle build --info'
