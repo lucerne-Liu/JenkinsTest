@@ -1,4 +1,4 @@
-#!groovy
+#!/usr/bin/env groovy Jenkinsfile
 // Declarative //
 pipeline {
     agent any
