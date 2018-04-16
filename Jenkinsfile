@@ -3,11 +3,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Declarative:Checkout SCM') {
-                steps {
-                    echo 'Declarative:Checkout SCM'
-                }
-            }
         stage('Build') {
             steps {
                 echo 'Building..'
